@@ -7,7 +7,7 @@ export function ProtectedRoute({ roles }) {
   const { isAuthenticated, loading, role } = useAuth();
   const location = useLocation();
 
-  if (loading) {
+  if (loading || (isAuthenticated && !role)) {
     return <LoadingScreen />;
   }
 
@@ -25,7 +25,7 @@ export function ProtectedRoute({ roles }) {
 export function PublicOnlyRoute() {
   const { isAuthenticated, loading, role } = useAuth();
 
-  if (loading) {
+  if (loading || (isAuthenticated && !role)) {
     return <LoadingScreen />;
   }
 

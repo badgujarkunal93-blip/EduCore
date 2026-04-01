@@ -194,25 +194,54 @@ const firebaseService = {
   mode: "firebase",
 
   observeAuth(callback) {
-    return onAuthStateChanged(auth, async (user) => {
+    let unsubscribeProfile = null;
+
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+      if (typeof unsubscribeProfile === "function") {
+        unsubscribeProfile();
+        unsubscribeProfile = null;
+      }
+
       if (!user) {
         callback({ user: null, profile: null, role: null });
         return;
       }
 
-      const profile = await getUserProfile(user.uid);
+      const authUser = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        providerId: getProviderId(user),
+      };
 
-      callback({
-        user: {
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName,
-          providerId: getProviderId(user),
+      unsubscribeProfile = onSnapshot(
+        doc(db, "users", user.uid),
+        (snapshot) => {
+          const profile = snapshot.exists() ? { uid: snapshot.id, ...snapshot.data() } : null;
+
+          callback({
+            user: authUser,
+            profile,
+            role: profile?.role || null,
+          });
         },
-        profile,
-        role: profile?.role || null,
-      });
+        async () => {
+          const profile = await getUserProfile(user.uid);
+          callback({
+            user: authUser,
+            profile,
+            role: profile?.role || null,
+          });
+        },
+      );
     });
+
+    return () => {
+      if (typeof unsubscribeProfile === "function") {
+        unsubscribeProfile();
+      }
+      unsubscribeAuth();
+    };
   },
 
   async login({ email, password }) {
