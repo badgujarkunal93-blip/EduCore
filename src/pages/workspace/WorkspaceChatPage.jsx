@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { WorkspaceShell } from "../../components/layout/shells";
 import {
@@ -27,6 +27,11 @@ export default function WorkspaceChatPage() {
   const [messageText, setMessageText] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [sending, setSending] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const readOnly = useMemo(
     () => role === "teacher" && group?.type === "class",
@@ -113,7 +118,7 @@ export default function WorkspaceChatPage() {
           </div>
         </div>
 
-        <div className="glass-panel flex h-[calc(100vh-15rem)] flex-col rounded-[2rem]">
+        <div className="glass-panel flex h-[calc(100vh-10rem)] flex-col rounded-[2rem]">
           <div className="border-b border-white/5 px-6 py-4">
             <InfoBanner tone="primary">
               Messages update live in Firestore. Attachments are shown as demo file cards so the app stays free on Firebase Spark.
@@ -186,6 +191,7 @@ export default function WorkspaceChatPage() {
             {messageText && !readOnly ? (
               <div className="text-sm text-on-surface-variant">Kunal is typing…</div>
             ) : null}
+            <div ref={messagesEndRef} />
           </div>
 
           <form className="border-t border-white/5 px-6 py-4" onSubmit={submitMessage}>
