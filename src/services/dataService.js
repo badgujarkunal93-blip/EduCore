@@ -537,7 +537,7 @@ const firebaseService = {
 
     const joinedAt = nowIso();
     await updateDoc(doc(db, "groups", groupDoc.id), {
-      members: arrayUnion(studentId),
+      members: [...(group.members || []), studentId],
     });
     await upsertProgressEntries(groupDoc.id, {
       [studentId]: {
