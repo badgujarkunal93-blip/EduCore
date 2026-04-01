@@ -539,12 +539,19 @@ const firebaseService = {
     await updateDoc(doc(db, "groups", groupDoc.id), {
       members: [...(group.members || []), studentId],
     });
-    await upsertProgressEntries(groupDoc.id, {
-      [studentId]: {
+    await setDoc(
+      doc(db, "progress", `${groupDoc.id}_${studentId}`),
+      {
+        id: `${groupDoc.id}_${studentId}`,
+        studentId,
+        groupId: groupDoc.id,
+        tasksTotal: 0,
+        tasksDone: 0,
         lastActive: joinedAt,
         lastActivity: `joined the team via invite code ${inviteCode}`,
       },
-    });
+      { merge: true },
+    );
 
     return group;
   },

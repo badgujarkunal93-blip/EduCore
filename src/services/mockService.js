@@ -888,12 +888,22 @@ const mockService = {
         text: `joined the hackathon squad using code ${nextGroup.joinCode}`,
         accent: "tertiary",
       });
-      upsertProgressEntries(draft, nextGroup.id, {
-        [studentId]: {
+      const progressId = `${nextGroup.id}_${studentId}`;
+      const existingProgress = draft.progress.find((entry) => entry.id === progressId);
+      if (existingProgress) {
+        existingProgress.lastActive = joinedAt;
+        existingProgress.lastActivity = `joined the team via invite code ${nextGroup.joinCode}`;
+      } else {
+        draft.progress.push({
+          id: progressId,
+          studentId,
+          groupId: nextGroup.id,
+          tasksTotal: 0,
+          tasksDone: 0,
           lastActive: joinedAt,
           lastActivity: `joined the team via invite code ${nextGroup.joinCode}`,
-        },
-      });
+        });
+      }
     });
 
     return getState().groups.find((item) => item.id === group.id);
