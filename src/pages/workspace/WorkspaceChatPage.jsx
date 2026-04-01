@@ -27,10 +27,15 @@ export default function WorkspaceChatPage() {
   const [messageText, setMessageText] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [sending, setSending] = useState(false);
-  const messagesEndRef = useRef(null);
+  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   }, [messages]);
 
   const readOnly = useMemo(
@@ -102,8 +107,8 @@ export default function WorkspaceChatPage() {
         </div>
       }
     >
-      <div className="space-y-6">
-        <div className="glass-panel rounded-[2rem] p-4">
+      <div className="flex h-[calc(100vh-9rem)] flex-col gap-6">
+        <div className="glass-panel shrink-0 rounded-[2rem] p-4">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <div className="font-headline text-2xl font-bold text-on-surface">Group Chat</div>
@@ -118,14 +123,17 @@ export default function WorkspaceChatPage() {
           </div>
         </div>
 
-        <div className="glass-panel flex h-[calc(100vh-10rem)] flex-col rounded-[2rem]">
+        <div className="glass-panel flex min-h-0 flex-1 flex-col rounded-[2rem]">
           <div className="border-b border-white/5 px-6 py-4">
             <InfoBanner tone="primary">
               Messages update live in Firestore. Attachments are shown as demo file cards so the app stays free on Firebase Spark.
             </InfoBanner>
           </div>
 
-          <div className="scrollbar-subtle flex-1 space-y-8 overflow-y-auto px-6 py-6">
+          <div
+            ref={scrollContainerRef}
+            className="scrollbar-subtle flex-1 space-y-8 overflow-y-auto px-6 py-6"
+          >
             <div className="flex items-center gap-4">
               <div className="h-px flex-1 bg-white/5" />
               <span className="font-label text-[10px] uppercase tracking-[0.24em] text-on-surface-variant">
@@ -191,7 +199,6 @@ export default function WorkspaceChatPage() {
             {messageText && !readOnly ? (
               <div className="text-sm text-on-surface-variant">Kunal is typing…</div>
             ) : null}
-            <div ref={messagesEndRef} />
           </div>
 
           <form className="border-t border-white/5 px-6 py-4" onSubmit={submitMessage}>
