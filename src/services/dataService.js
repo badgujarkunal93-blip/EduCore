@@ -484,6 +484,14 @@ const firebaseService = {
     );
 
     if (groupSnapshot.empty) {
+      const subjectSnapshot = await getDocs(
+        query(collection(db, "subjects"), where("joinCode", "==", inviteCode), limit(1)),
+      );
+
+      if (!subjectSnapshot.empty) {
+        throw new Error("That code belongs to a class. Use 'Join new class' instead.");
+      }
+
       throw new Error("That invite code does not match any hackathon group.");
     }
 
@@ -660,7 +668,7 @@ const firebaseService = {
 
     await upsertProgressEntries(groupRef.id);
 
-    return { id: groupRef.id, name };
+    return { id: groupRef.id, name, joinCode };
   },
 
   async ensureHackathonJoinCode({ groupId }) {

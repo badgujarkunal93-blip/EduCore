@@ -861,6 +861,11 @@ const mockService = {
     );
 
     if (!group) {
+      const subject = state.subjects.find((item) => item.joinCode === joinCode.trim());
+      if (subject) {
+        throw new Error("That code belongs to a class. Use 'Join new class' instead.");
+      }
+
       throw new Error("That invite code does not match any hackathon group.");
     }
 
@@ -945,7 +950,11 @@ const mockService = {
     const group = state.groups.find((item) => item.id === id);
     upsertProgressEntries(state, id);
     setState(state);
-    return group;
+    return {
+      id: group.id,
+      name: group.name,
+      joinCode: group.joinCode,
+    };
   },
 
   async ensureHackathonJoinCode({ groupId }) {

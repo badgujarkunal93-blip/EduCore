@@ -121,12 +121,25 @@ export default function StudentDashboardPage() {
     }
   };
 
+  const ensureHackathonCode = async (group) => {
+    try {
+      const joinCode = await dataService.ensureHackathonJoinCode({ groupId: group.id });
+      await copyHackathonCode(joinCode);
+    } catch (error) {
+      pushToast({
+        title: "Could not generate code",
+        description: error.message,
+        tone: "error",
+      });
+    }
+  };
+
   const createHackathonGroup = async (event) => {
     event.preventDefault();
     setCreatingGroup(true);
 
     try {
-      await dataService.createHackathonGroup({
+      const group = await dataService.createHackathonGroup({
         ownerId: profile.uid,
         name: hackathonForm.name,
         description: hackathonForm.description,
@@ -136,7 +149,7 @@ export default function StudentDashboardPage() {
       setHackathonForm({ name: "", description: "", githubRepo: "" });
       pushToast({
         title: "Hackathon group created",
-        description: "Your workspace is ready for chat, tasks, and showcase tabs.",
+        description: `Your workspace is ready. Share invite code ${group.joinCode} with teammates.`,
         tone: "success",
       });
     } catch (error) {
@@ -307,6 +320,15 @@ export default function StudentDashboardPage() {
                           >
                             <MaterialIcon name="content_copy" />
                             Copy
+                          </button>
+                        ) : group.ownerId === profile.uid ? (
+                          <button
+                            type="button"
+                            className="ghost-btn"
+                            onClick={() => ensureHackathonCode(group)}
+                          >
+                            <MaterialIcon name="vpn_key" />
+                            Generate
                           </button>
                         ) : (
                           <StatusBadge tone="neutral">Generate from workspace</StatusBadge>
