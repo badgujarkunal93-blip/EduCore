@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+
+  --color-background: 10 13 20;
+  --color-surface: 11 14 20;
+  --color-surface-dim: 11 14 20;
+  --color-surface-bright: 40 44 54;
+  --color-surface-variant: 34 38 47;
+  --color-surface-container-lowest: 0 0 0;
+  --color-surface-container-low: 16 19 26;
+  --color-surface-container: 22 26 33;
+  --color-surface-container-high: 28 32 40;
+  --color-surface-container-highest: 34 38 47;
+
+  --color-primary: 0 212 255;
+  --color-primary-soft: 153 247 255;
+  --color-primary-dim: 0 226 238;
+  --color-primary-container: 0 241 254;
+  --color-secondary: 124 58 237;
+  --color-secondary-soft: 172 137 255;
+  --color-secondary-dim: 135 76 255;
+  --color-secondary-container: 112 0 255;
+  --color-tertiary: 214 116 255;
+  --color-tertiary-container: 190 13 255;
+
+  --color-outline: 115 117 125;
+  --color-outline-variant: 69 72 79;
+  --color-on-background: 236 237 246;
+  --color-on-surface: 236 237 246;
+  --color-on-surface-variant: 169 171 179;
+  --color-on-primary: 0 95 100;
+  --color-on-primary-container: 0 85 90;
+  --color-on-secondary: 41 0 103;
+  --color-on-secondary-container: 248 241 255;
+  --color-error: 255 113 108;
+  --color-success: 74 222 128;
+  --color-warning: 245 158 11;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --color-background: 249 249 255;
+  --color-surface: 244 246 252;
+  --color-surface-dim: 239 242 249;
+  --color-surface-bright: 255 255 255;
+  --color-surface-variant: 227 232 244;
+  --color-surface-container-lowest: 255 255 255;
+  --color-surface-container-low: 246 249 255;
+  --color-surface-container: 239 244 250;
+  --color-surface-container-high: 232 238 248;
+  --color-surface-container-highest: 224 231 244;
+
+  --color-outline: 112 122 138;
+  --color-outline-variant: 186 198 220;
+  --color-on-background: 14 20 31;
+  --color-on-surface: 17 24 39;
+  --color-on-surface-variant: 75 85 99;
+  --color-on-primary: 255 255 255;
+  --color-on-primary-container: 0 72 90;
+  --color-on-secondary: 255 255 255;
+  --color-on-secondary-container: 32 18 81;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-background text-on-background font-body antialiased;
+  background-image:
+    radial-gradient(circle at top left, rgba(0, 212, 255, 0.1), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.14), transparent 34%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  line-height: 1;
+}
+
+@layer components {
+  .hud-grid {
+    background-image:
+      linear-gradient(rgba(69, 72, 79, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(69, 72, 79, 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .glass-panel {
+    @apply border border-white/5 bg-surface-container-low/70 shadow-glass backdrop-blur-2xl;
+  }
+
+  .glass-panel-strong {
+    @apply border border-primary/10 bg-surface-container/75 shadow-glass backdrop-blur-2xl;
+  }
+
+  .sidebar-shell {
+    @apply border-r border-white/5 bg-black/40 backdrop-blur-2xl;
+  }
+
+  .topbar-shell {
+    @apply border-b border-white/10 bg-surface/70 backdrop-blur-xl;
+  }
+
+  .kinetic-input {
+    @apply w-full rounded-xl border border-outline-variant/30 bg-surface-container-lowest/80 px-4 py-3 text-sm text-on-surface outline-none transition-all placeholder:text-on-surface-variant/50 focus:border-primary/60 focus:ring-2 focus:ring-primary/20;
+  }
+
+  .kinetic-select {
+    @apply kinetic-input appearance-none;
+  }
+
+  .primary-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary-gradient px-5 py-3 font-headline text-sm font-bold uppercase tracking-[0.24em] text-on-primary shadow-cyan transition-all hover:brightness-110 active:scale-[0.98];
+  }
+
+  .secondary-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-secondary-gradient px-5 py-3 font-headline text-sm font-bold uppercase tracking-[0.24em] text-white shadow-violet transition-all hover:brightness-110 active:scale-[0.98];
+  }
+
+  .ghost-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-primary/20 bg-primary/5 px-4 py-2.5 text-sm font-semibold text-primary transition-all hover:border-primary/40 hover:bg-primary/10;
+  }
+
+  .shell-link {
+    @apply flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-on-surface-variant transition-all hover:bg-white/5 hover:text-on-surface;
+  }
+
+  .shell-link-active {
+    @apply bg-gradient-to-r from-primary/20 to-secondary/10 text-primary shadow-[inset_0_0_0_1px_rgba(0,212,255,0.18)];
+  }
+
+  .stat-card {
+    @apply glass-panel relative overflow-hidden rounded-2xl p-6;
+  }
+
+  .section-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 font-label text-[10px] font-bold uppercase tracking-[0.28em] text-primary-soft;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em];
+  }
+
+  .scrollbar-subtle::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-subtle::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-outline-variant/40;
+  }
+
+  .scrollbar-subtle::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}

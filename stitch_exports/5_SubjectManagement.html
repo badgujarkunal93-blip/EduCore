@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#73757d",
+              "surface-dim": "#0b0e14",
+              "surface-container-lowest": "#000000",
+              "on-tertiary": "#390050",
+              "secondary-dim": "#874cff",
+              "surface-variant": "#22262f",
+              "tertiary-dim": "#bb00fc",
+              "on-primary-fixed-variant": "#006065",
+              "surface": "#0b0e14",
+              "on-error-container": "#ffa8a3",
+              "surface-container-highest": "#22262f",
+              "inverse-surface": "#f9f9ff",
+              "secondary-fixed-dim": "#ceb9ff",
+              "surface-container-low": "#10131a",
+              "tertiary-fixed": "#e192ff",
+              "surface-container": "#161a21",
+              "on-primary": "#005f64",
+              "on-secondary": "#290067",
+              "on-background": "#ecedf6",
+              "on-primary-container": "#00555a",
+              "primary-container": "#00f1fe",
+              "surface-container-high": "#1c2028",
+              "tertiary-fixed-dim": "#d97dff",
+              "on-secondary-fixed-variant": "#6300e2",
+              "on-primary-fixed": "#004145",
+              "surface-bright": "#282c36",
+              "primary-fixed-dim": "#00e2ee",
+              "on-tertiary-fixed-variant": "#600083",
+              "secondary": "#ac89ff",
+              "tertiary": "#d674ff",
+              "on-surface-variant": "#a9abb3",
+              "inverse-on-surface": "#52555c",
+              "primary": "#99f7ff",
+              "on-surface": "#ecedf6",
+              "secondary-fixed": "#dac9ff",
+              "primary-dim": "#00e2ee",
+              "error": "#ff716c",
+              "on-tertiary-container": "#000000",
+              "error-dim": "#d7383b",
+              "surface-tint": "#99f7ff",
+              "on-secondary-fixed": "#41009a",
+              "secondary-container": "#7000ff",
+              "on-error": "#490006",
+              "on-secondary-container": "#f8f1ff",
+              "inverse-primary": "#006a70",
+              "on-tertiary-fixed": "#2c003f",
+              "primary-fixed": "#00f1fe",
+              "error-container": "#9f0519",
+              "background": "#0b0e14",
+              "outline-variant": "#45484f",
+              "tertiary-container": "#be0dff"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(16, 19, 26, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .glass-card:hover {
+        border-color: rgba(0, 242, 255, 0.3);
+        box-shadow: 0 0 30px rgba(0, 242, 255, 0.05);
+      }
+      .neon-glow-primary {
+        box-shadow: 0 0 15px rgba(0, 241, 254, 0.3);
+      }
+      .coordinate-grid {
+        background-image: linear-gradient(rgba(69, 72, 79, 0.05) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(69, 72, 79, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full z-50 bg-black/40 backdrop-blur-xl h-screen w-64 border-r border-white/10 font-['Space_Grotesk'] tracking-tight text-sm shadow-[0_0_40px_rgba(0,242,255,0.1)]">
+<div class="p-8">
+<div class="text-2xl font-bold bg-gradient-to-br from-[#99f7ff] to-[#00f1fe] bg-clip-text text-transparent">EduCore</div>
+<div class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 mt-1">Kinetic Observatory</div>
+</div>
+<nav class="mt-4 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 transition-colors hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+                Dashboard
+            </a>
+<!-- Active State: My Subjects -->
+<a class="flex items-center gap-3 px-4 py-3 bg-[#00F2FF]/10 text-[#00F2FF] border-r-2 border-[#00F2FF] transition-all" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">book</span>
+                My Subjects
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 transition-colors hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+                Students
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 transition-colors hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 transition-colors hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-lg">video_chat</span>
+                Meetings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 transition-colors hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="absolute bottom-8 left-8 right-8">
+<div class="flex items-center gap-3 p-3 glass-card rounded-lg">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Teacher Profile" data-alt="close up professional headshot of a professor in a modern tech office environment soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJpM7oMei3-Ox-tmH13Fni3DFL02efDNKj-5I-8jda4IdyzFfaGq6dkR179PXccNpVV_7t22N8C0RbcZonjaluHmUNzt0o4F1NxHoWhqyL6KAEwtkn27CpIfsLQdZYe6aS94ai7u5tXezsYbMzlNQ7-DRBT2WfXJOV-Jz4Mk8h-95iGD8WJP50L5asDl6w2imFoxma7YD5hTnvqCsYux8I4jc24pJUyWRHfg5g3hzQYtIzzP0MgwJbEJD0S7jZ3TUV1LhCQr1vLqtW"/>
+</div>
+<div>
+<div class="text-xs font-bold text-on-surface">Dr. Aris Thorne</div>
+<div class="text-[10px] text-on-surface-variant">Senior Faculty</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen relative coordinate-grid">
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center w-full px-8 h-16 bg-[#0b0e14]/60 backdrop-blur-md font-['Inter'] font-medium sticky top-0 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="w-full bg-surface-container-lowest border-none focus:ring-1 focus:ring-secondary/50 text-sm pl-10 py-2 rounded-sm text-on-surface placeholder:text-on-surface-variant/50" placeholder="Search resources or students..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-slate-400">
+<button class="hover:text-[#99f7ff] transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full neon-glow-primary"></span>
+</button>
+<button class="hover:text-[#99f7ff] transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/20"></div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-on-surface-variant">Term: Winter 2024</span>
+<span class="material-symbols-outlined text-primary text-sm">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-10 max-w-7xl mx-auto">
+<!-- Header Action Row -->
+<div class="flex justify-between items-end mb-12">
+<div>
+<h1 class="font-headline text-5xl font-bold tracking-tight text-on-surface mb-2">My Subjects</h1>
+<p class="font-label text-on-surface-variant max-w-md">Manage your active curriculum, monitor student engagement, and coordinate learning workspaces.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-secondary to-secondary-container text-on-secondary-container font-bold rounded-sm neon-glow-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+<span>+ Create Subject</span>
+</button>
+</div>
+<!-- Subjects Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="glass-card p-6 flex flex-col group transition-all duration-500">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-primary/5 rounded-sm border border-primary/10">
+<span class="material-symbols-outlined text-primary" data-weight="fill">terminal</span>
+</div>
+<span class="font-label text-[10px] px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded-full tracking-wider uppercase">Computer Science</span>
+</div>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-1">Advanced Algorithms — Sem 6</h3>
+<div class="flex items-center gap-4 mb-8">
+<div class="flex items-center gap-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>42 Students</span>
+</div>
+<div class="w-1 h-1 bg-outline-variant/40 rounded-full"></div>
+<div class="text-[10px] text-primary/80 font-mono flex items-center gap-1 bg-primary/5 px-2 py-0.5 border border-primary/10">
+                            CODE: ALGO24
+                            <span class="material-symbols-outlined text-[12px] cursor-pointer hover:text-primary">content_copy</span>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant/60 font-label">
+<span>Last activity: 2 hours ago</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span> Active session</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2 text-xs font-bold border border-primary/20 text-primary hover:bg-primary/10 transition-colors uppercase tracking-widest">View Progress</button>
+<button class="py-2 text-xs font-bold bg-primary text-on-primary hover:brightness-110 transition-all uppercase tracking-widest">Open Workspace</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-6 flex flex-col group transition-all duration-500">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-secondary/5 rounded-sm border border-secondary/10">
+<span class="material-symbols-outlined text-secondary" data-weight="fill">database</span>
+</div>
+<span class="font-label text-[10px] px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded-full tracking-wider uppercase">Computer Science</span>
+</div>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-1">Data Structures — Sem 4</h3>
+<div class="flex items-center gap-4 mb-8">
+<div class="flex items-center gap-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>38 Students</span>
+</div>
+<div class="w-1 h-1 bg-outline-variant/40 rounded-full"></div>
+<div class="text-[10px] text-secondary/80 font-mono flex items-center gap-1 bg-secondary/5 px-2 py-0.5 border border-secondary/10">
+                            CODE: DS4-NEW
+                            <span class="material-symbols-outlined text-[12px] cursor-pointer hover:text-secondary">content_copy</span>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant/60 font-label">
+<span>Last activity: 10 mins ago</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse"></span> Uploading grades</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2 text-xs font-bold border border-primary/20 text-primary hover:bg-primary/10 transition-colors uppercase tracking-widest">View Progress</button>
+<button class="py-2 text-xs font-bold bg-primary text-on-primary hover:brightness-110 transition-all uppercase tracking-widest">Open Workspace</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-6 flex flex-col group transition-all duration-500">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-tertiary/5 rounded-sm border border-tertiary/10">
+<span class="material-symbols-outlined text-tertiary" data-weight="fill">cloud</span>
+</div>
+<span class="font-label text-[10px] px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded-full tracking-wider uppercase">IT</span>
+</div>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-1">Cloud Computing — Sem 7</h3>
+<div class="flex items-center gap-4 mb-8">
+<div class="flex items-center gap-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>25 Students</span>
+</div>
+<div class="w-1 h-1 bg-outline-variant/40 rounded-full"></div>
+<div class="text-[10px] text-tertiary/80 font-mono flex items-center gap-1 bg-tertiary/5 px-2 py-0.5 border border-tertiary/10">
+                            CODE: CLD771
+                            <span class="material-symbols-outlined text-[12px] cursor-pointer hover:text-tertiary">content_copy</span>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant/60 font-label">
+<span>Last activity: Yesterday</span>
+<span class="flex items-center gap-1 text-outline-variant">Idle</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2 text-xs font-bold border border-primary/20 text-primary hover:bg-primary/10 transition-colors uppercase tracking-widest">View Progress</button>
+<button class="py-2 text-xs font-bold bg-primary text-on-primary hover:brightness-110 transition-all uppercase tracking-widest">Open Workspace</button>
+</div>
+</div>
+</div>
+<!-- Create Placeholder -->
+<button class="border-2 border-dashed border-outline-variant/20 rounded-sm p-6 flex flex-col items-center justify-center gap-4 hover:border-primary/40 hover:bg-primary/5 transition-all group min-h-[320px]">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl text-outline-variant group-hover:text-primary transition-colors">add_circle</span>
+</div>
+<div class="text-center">
+<div class="text-on-surface font-bold">Initialize New Course</div>
+<div class="text-xs text-on-surface-variant">Setup workspace, curriculum, and codes.</div>
+</div>
+</button>
+</div>
+<!-- Dashboard Stats Ticker -->
+<div class="mt-20 border-t border-outline-variant/10 pt-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Total Managed Students</span>
+<span class="text-4xl font-headline font-bold text-primary">105</span>
+<span class="text-[10px] text-primary/60 mt-1">+12% from last term</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Active Workspaces</span>
+<span class="text-4xl font-headline font-bold text-on-surface">03</span>
+<span class="text-[10px] text-on-surface-variant mt-1">2 archival scheduled</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Avg. Engagement</span>
+<span class="text-4xl font-headline font-bold text-secondary">88%</span>
+<span class="text-[10px] text-secondary/60 mt-1">Peak performance reached</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Platform Health</span>
+<span class="text-4xl font-headline font-bold text-on-surface flex items-center gap-2">
+                        99.9
+                        <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Kinetic latency &lt; 20ms</span>
+</div>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute top-1/4 -right-24 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full -z-10"></div>
+<div class="absolute bottom-1/4 -left-24 w-96 h-96 bg-primary/10 blur-[120px] rounded-full -z-10"></div>
+</main>
+</body></html>

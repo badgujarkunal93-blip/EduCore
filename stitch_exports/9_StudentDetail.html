@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#006065",
+              "on-tertiary-fixed": "#2c003f",
+              "surface-bright": "#282c36",
+              "tertiary-fixed": "#e192ff",
+              "on-surface-variant": "#a9abb3",
+              "outline": "#73757d",
+              "on-primary-fixed": "#004145",
+              "surface-container-highest": "#22262f",
+              "surface-container-low": "#10131a",
+              "surface-container": "#161a21",
+              "primary-fixed-dim": "#00e2ee",
+              "on-tertiary-container": "#000000",
+              "error-dim": "#d7383b",
+              "inverse-primary": "#006a70",
+              "surface-container-high": "#1c2028",
+              "secondary-fixed-dim": "#ceb9ff",
+              "surface-variant": "#22262f",
+              "on-error": "#490006",
+              "error": "#ff716c",
+              "on-secondary-fixed": "#41009a",
+              "secondary": "#ac89ff",
+              "on-secondary": "#290067",
+              "background": "#0b0e14",
+              "tertiary-container": "#be0dff",
+              "on-secondary-fixed-variant": "#6300e2",
+              "tertiary": "#d674ff",
+              "error-container": "#9f0519",
+              "secondary-fixed": "#dac9ff",
+              "outline-variant": "#45484f",
+              "surface-container-lowest": "#000000",
+              "primary": "#99f7ff",
+              "surface-dim": "#0b0e14",
+              "secondary-dim": "#874cff",
+              "on-background": "#ecedf6",
+              "tertiary-dim": "#bb00fc",
+              "tertiary-fixed-dim": "#d97dff",
+              "surface-tint": "#99f7ff",
+              "surface": "#0b0e14",
+              "secondary-container": "#7000ff",
+              "on-error-container": "#ffa8a3",
+              "on-tertiary": "#390050",
+              "on-tertiary-fixed-variant": "#600083",
+              "on-primary-container": "#00555a",
+              "on-primary": "#005f64",
+              "primary-dim": "#00e2ee",
+              "on-surface": "#ecedf6",
+              "on-secondary-container": "#f8f1ff",
+              "inverse-surface": "#f9f9ff",
+              "primary-fixed": "#00f1fe",
+              "primary-container": "#00f1fe",
+              "inverse-on-surface": "#52555c"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(16, 19, 26, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(153, 247, 255, 0.05);
+        }
+        .grid-overlay {
+            background-image: linear-gradient(rgba(69, 72, 79, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(69, 72, 79, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 15px rgba(0, 241, 254, 0.15);
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0b0e14; }
+        ::-webkit-scrollbar-thumb { background: #22262f; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #45484f; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(0,242,255,0.1)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent font-headline tracking-tight">EduCore</span>
+<div class="hidden md:flex items-center gap-6 text-slate-400 font-label text-sm">
+<a class="text-slate-400 hover:text-slate-200 transition-all duration-300" href="#">Dashboard</a>
+<a class="text-cyan-400 border-b-2 border-cyan-400 pb-1 transition-all duration-300" href="#">Students</a>
+<a class="text-slate-400 hover:text-slate-200 transition-all duration-300" href="#">Analytics</a>
+<a class="text-slate-400 hover:text-slate-200 transition-all duration-300" href="#">Resources</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white/10">
+<img alt="Teacher Profile" class="w-full h-full object-cover" data-alt="professional portrait of a confident female teacher in a modern educational environment with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMC1n0OLN7Kvx1meUeqF-BZ8gtOHD7nGac4sTwFtr7kk9zJTPhMhaDYDLbCQKgt-tdGPswH9QixoW_LQR8RvsNN9lwHB8wOpdYcSFcgajfVhujh2QmY8F6qG3MjBP050MN62jFwcSzqNOgWBKdUU7CYJsqlwVOeUzPta_mb1Dpfdl7rUax0CBQGxup1l05C_gUsisaH1mr_65Jl02duJ3P7DgHVB3zM-3QpXtHseTwwUeG9K95Vw3zoPKe-f1Tqkvmjxa0hQJWXj4C"/>
+</div>
+</div>
+</nav>
+<!-- Side Navigation -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 bg-black/40 backdrop-blur-2xl shadow-2xl shadow-cyan-900/20 flex flex-col pt-20 pb-6 h-full border-r border-white/5">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-primary text-sm">EduCore</h3>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest">Teacher Portal</p>
+</div>
+</div>
+</div>
+<div class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-300 px-4 py-3 ml-2 hover:bg-white/5 transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">dashboard</span>
+<span class="font-label font-medium text-sm">Overview</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-300 px-4 py-3 ml-2 hover:bg-white/5 transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">assignment</span>
+<span class="font-label font-medium text-sm">Assignments</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-300 px-4 py-3 ml-2 hover:bg-white/5 transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">event_available</span>
+<span class="font-label font-medium text-sm">Attendance</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-300 px-4 py-3 ml-2 hover:bg-white/5 transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">grade</span>
+<span class="font-label font-medium text-sm">Grading</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-300 px-4 py-3 ml-2 hover:bg-white/5 transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">mail</span>
+<span class="font-label font-medium text-sm">Messages</span>
+</a>
+</div>
+<div class="px-4 mt-auto space-y-1">
+<button class="w-full mb-4 bg-gradient-to-r from-primary to-primary-container text-on-primary-container py-2.5 rounded-lg font-label font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Report
+            </button>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-300 px-4 py-3 hover:bg-white/5 rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-xl">help</span>
+<span class="font-label font-medium text-sm">Help</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-300 px-4 py-3 hover:bg-white/5 rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span class="font-label font-medium text-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="pl-64 pt-16 min-h-screen bg-background grid-overlay">
+<div class="p-8 grid grid-cols-10 gap-8 h-full">
+<!-- Left 60% Content -->
+<div class="col-span-10 lg:col-span-6 space-y-8">
+<!-- Student Profile Header -->
+<header class="glass-panel p-6 rounded-xl flex items-center justify-between border-l-4 border-primary">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-primary to-secondary">
+<img alt="Alex Chen Profile" class="w-full h-full object-cover rounded-full border-2 border-surface" data-alt="portrait of a young asian male student wearing glasses in a minimalist studio setting with moody blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMPHY3Qdm4hy5Tz_Q0F357UV3j_K5RQ32h4lzl-CVOcBjhi1emHU1borf9lHFavks2Unos8ZeoOaNgbH3cQyfnwddabbXPEYFD-FU9QiPUKTNSpuy1nK5CxuTH3HU3ceIJIQNMDQpX37kvxipb905B7UgcXrtwmQWY1BhYoBCBxX0eimsiIGP6uk5NfWrx-ISSEdUMNixoXQ3i-RNcDowRsxgfPxIOSZ6S_9D-PMxAMpzpOqCkEUU322wF6KZFEh6iFAtIddqU74IM"/>
+</div>
+<div class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-2 border-surface rounded-full"></div>
+</div>
+<div>
+<h1 class="text-3xl font-headline font-bold text-on-surface tracking-tight">Alex Chen</h1>
+<p class="text-on-surface-variant font-label text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">mail</span>
+                                alex.chen@educore.edu
+                            </p>
+<div class="flex gap-4 mt-3">
+<span class="px-3 py-1 rounded bg-secondary/10 border border-secondary/20 text-secondary text-[10px] font-bold uppercase tracking-widest">Alpha Quant</span>
+<span class="px-3 py-1 rounded bg-white/5 border border-white/10 text-on-surface-variant text-[10px] font-bold uppercase tracking-widest">Joined Sep 2024</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-highest hover:bg-primary/20 hover:text-primary transition-all rounded">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 bg-surface-container-highest hover:bg-primary/20 hover:text-primary transition-all rounded">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Task Completion Timeline -->
+<section class="glass-panel p-6 rounded-xl relative overflow-hidden">
+<h2 class="font-headline font-semibold text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                            Task Completion
+                        </h2>
+<div class="space-y-6 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[1px] before:bg-outline-variant">
+<div class="relative pl-10">
+<div class="absolute left-1.5 top-2 w-3 h-3 rounded-full bg-primary ring-4 ring-primary/10"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-bold text-on-surface">Neural Network Optimization</p>
+<p class="text-xs text-on-surface-variant">Module 4: Advanced AI</p>
+</div>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded border border-primary/20 uppercase">Done</span>
+</div>
+</div>
+<div class="relative pl-10">
+<div class="absolute left-1.5 top-2 w-3 h-3 rounded-full bg-secondary ring-4 ring-secondary/10"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-bold text-on-surface">Backend API Integration</p>
+<p class="text-xs text-on-surface-variant">Core Engineering Project</p>
+</div>
+<span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded border border-secondary/20 uppercase">In Progress</span>
+</div>
+</div>
+<div class="relative pl-10 opacity-60">
+<div class="absolute left-1.5 top-2 w-3 h-3 rounded-full bg-error ring-4 ring-error/10"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-bold text-on-surface">Weekly Lab Reflection #12</p>
+<p class="text-xs text-on-surface-variant">Communication Module</p>
+</div>
+<span class="bg-error/10 text-error text-[10px] font-bold px-2 py-0.5 rounded border border-error/20 uppercase">Overdue</span>
+</div>
+</div>
+</div>
+</section>
+<!-- GitHub Commit Heatmap -->
+<section class="glass-panel p-6 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline font-semibold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">data_thresholding</span>
+                                Development Activity
+                            </h2>
+<span class="text-[10px] font-label text-on-surface-variant uppercase tracking-tighter">Last 3 Months</span>
+</div>
+<div class="grid grid-cols-13 grid-rows-7 gap-1.5 h-32">
+<!-- Simulated Heatmap Squares -->
+<div class="bg-primary/40 rounded-sm"></div>
+<div class="bg-surface-container-highest rounded-sm"></div>
+<div class="bg-primary/60 rounded-sm"></div>
+<div class="bg-primary/20 rounded-sm"></div>
+<div class="bg-surface-container-highest rounded-sm"></div>
+<div class="bg-primary/80 rounded-sm"></div>
+<div class="bg-primary/10 rounded-sm"></div>
+<div class="bg-primary rounded-sm shadow-[0_0_8px_rgba(153,247,255,0.4)]"></div>
+<!-- ... Repeated patterns ... -->
+<script>
+                                for(let i=0; i<80; i++) {
+                                    const intensities = ['bg-surface-container-highest', 'bg-primary/10', 'bg-primary/30', 'bg-primary/60', 'bg-primary'];
+                                    const rand = Math.floor(Math.random() * 5);
+                                    document.write(`<div class="${intensities[rand]} rounded-sm"></div>`);
+                                }
+                            </script>
+</div>
+<div class="flex items-center justify-end mt-4 gap-2">
+<span class="text-[10px] text-on-surface-variant">Less</span>
+<div class="flex gap-1">
+<div class="w-2.5 h-2.5 bg-surface-container-highest rounded-sm"></div>
+<div class="w-2.5 h-2.5 bg-primary/20 rounded-sm"></div>
+<div class="w-2.5 h-2.5 bg-primary/50 rounded-sm"></div>
+<div class="w-2.5 h-2.5 bg-primary rounded-sm"></div>
+</div>
+<span class="text-[10px] text-on-surface-variant">More</span>
+</div>
+</section>
+</div>
+<!-- Meeting Attendance Table -->
+<section class="glass-panel rounded-xl overflow-hidden">
+<div class="p-6 border-b border-white/5 bg-white/5">
+<h2 class="font-headline font-semibold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">groups</span>
+                            Meeting Attendance
+                        </h2>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[10px] uppercase tracking-widest text-on-surface-variant bg-surface-container-lowest/50">
+<th class="px-6 py-4 font-bold">Date</th>
+<th class="px-6 py-4 font-bold">Session Name</th>
+<th class="px-6 py-4 font-bold text-center">Attended</th>
+<th class="px-6 py-4 font-bold">Notes</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 text-xs font-label text-on-surface">Oct 24, 2024</td>
+<td class="px-6 py-4 text-xs font-bold text-on-surface">Q4 Strategy Review</td>
+<td class="px-6 py-4 text-center">
+<span class="material-symbols-outlined text-green-400 text-lg">check_circle</span>
+</td>
+<td class="px-6 py-4 text-[10px] text-on-surface-variant italic">Active contributor in breakout sessions</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 text-xs font-label text-on-surface">Oct 21, 2024</td>
+<td class="px-6 py-4 text-xs font-bold text-on-surface">Sprint Planning: Alpha</td>
+<td class="px-6 py-4 text-center">
+<span class="material-symbols-outlined text-green-400 text-lg">check_circle</span>
+</td>
+<td class="px-6 py-4 text-[10px] text-on-surface-variant italic">-</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 text-xs font-label text-on-surface">Oct 17, 2024</td>
+<td class="px-6 py-4 text-xs font-bold text-on-surface">Team Lead One-on-One</td>
+<td class="px-6 py-4 text-center">
+<span class="material-symbols-outlined text-error text-lg">cancel</span>
+</td>
+<td class="px-6 py-4 text-[10px] text-on-surface-variant italic">Excused: Medical appointment</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 text-xs font-label text-on-surface">Oct 14, 2024</td>
+<td class="px-6 py-4 text-xs font-bold text-on-surface">Quant Analysis Workshop</td>
+<td class="px-6 py-4 text-center">
+<span class="material-symbols-outlined text-green-400 text-lg">check_circle</span>
+</td>
+<td class="px-6 py-4 text-[10px] text-on-surface-variant italic">High performance in lab exercise</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+<!-- Right 40% Content: Version History Panel -->
+<div class="col-span-10 lg:col-span-4 space-y-8">
+<section class="glass-panel h-full rounded-xl flex flex-col border-t border-secondary/20">
+<div class="p-6 border-b border-white/5">
+<h2 class="font-headline font-semibold text-xl mb-4 text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined">history</span>
+                            Version Control
+                        </h2>
+<!-- File List -->
+<div class="flex flex-wrap gap-2 mb-6">
+<div class="px-3 py-2 bg-secondary/10 border border-secondary/40 rounded flex items-center gap-3 cursor-pointer">
+<span class="material-symbols-outlined text-xs text-secondary">terminal</span>
+<span class="text-xs font-bold text-on-surface">Main.py</span>
+<span class="bg-secondary text-on-secondary text-[10px] px-1.5 rounded-full">12</span>
+</div>
+<div class="px-3 py-2 bg-surface-container-highest border border-white/5 rounded flex items-center gap-3 cursor-pointer hover:bg-white/5">
+<span class="material-symbols-outlined text-xs text-on-surface-variant">css</span>
+<span class="text-xs font-medium text-on-surface-variant">Style.css</span>
+<span class="bg-surface-variant text-on-surface-variant text-[10px] px-1.5 rounded-full">8</span>
+</div>
+<div class="px-3 py-2 bg-surface-container-highest border border-white/5 rounded flex items-center gap-3 cursor-pointer hover:bg-white/5">
+<span class="material-symbols-outlined text-xs text-on-surface-variant">description</span>
+<span class="text-xs font-medium text-on-surface-variant">README.md</span>
+<span class="bg-surface-variant text-on-surface-variant text-[10px] px-1.5 rounded-full">4</span>
+</div>
+</div>
+</div>
+<!-- Version Timeline -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- Version Item 1 -->
+<div class="relative pl-8 border-l border-secondary/20">
+<div class="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#ac89ff]"></div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-[10px] font-label text-on-surface-variant">v12 • 2 hours ago</span>
+<button class="px-3 py-1 bg-white/5 text-[10px] font-bold text-on-surface-variant rounded disabled:opacity-50 cursor-not-allowed">Restore Version</button>
+</div>
+<h4 class="text-sm font-bold text-on-surface mb-2">Implemented Gradient Boosting</h4>
+<p class="text-xs text-on-surface-variant mb-4">Added XGBoost integration for prediction model. Updated data pre-processing pipeline to handle missing values.</p>
+<div class="space-y-2">
+<label class="text-[10px] uppercase font-bold text-secondary/70">Teacher Note</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded p-3 text-xs focus:border-secondary transition-all" placeholder="Enter feedback for student..."></textarea>
+<div class="flex justify-end">
+<button class="bg-secondary/10 hover:bg-secondary/20 text-secondary text-[10px] font-bold px-4 py-2 rounded transition-all">Save Feedback</button>
+</div>
+</div>
+</div>
+<!-- Version Item 2 -->
+<div class="relative pl-8 border-l border-white/5">
+<div class="absolute -left-1 w-2 h-2 rounded-full bg-outline"></div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-[10px] font-label text-on-surface-variant">v11 • Yesterday, 4:20 PM</span>
+</div>
+<h4 class="text-sm font-bold text-on-surface mb-2">Refactored API Endpoints</h4>
+<p class="text-xs text-on-surface-variant mb-4">Cleanup of legacy routes. Consolidated logic into specific controller modules.</p>
+<div class="p-3 bg-secondary/5 border-l-2 border-secondary/40 rounded">
+<p class="text-[10px] italic text-on-surface-variant font-label leading-relaxed">"Great job on the modularity here, Alex. The controller separation is exactly what we discussed." — Teacher Smith</p>
+</div>
+</div>
+<!-- Version Item 3 -->
+<div class="relative pl-8 border-l border-white/5">
+<div class="absolute -left-1 w-2 h-2 rounded-full bg-outline"></div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-[10px] font-label text-on-surface-variant">v10 • 3 days ago</span>
+</div>
+<h4 class="text-sm font-bold text-on-surface mb-2">Initial Model Draft</h4>
+<p class="text-xs text-on-surface-variant">Baseline linear regression model established. Basic visualization added to dashboard.</p>
+</div>
+</div>
+<div class="p-6 bg-surface-container-lowest/30 border-t border-white/5">
+<button class="w-full py-3 bg-surface-container-highest text-on-surface-variant text-xs font-bold rounded flex items-center justify-center gap-2 hover:bg-white/10 transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Download Archive (.zip)
+                        </button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Floating Action for Mobile / Quick Note -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-tr from-primary to-secondary text-on-primary-container rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">add_comment</span>
+</button>
+</body></html>

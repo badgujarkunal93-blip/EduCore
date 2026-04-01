@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduCore - GitHub Integration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#e192ff",
+              "outline-variant": "#45484f",
+              "on-primary-fixed": "#004145",
+              "on-primary": "#005f64",
+              "surface-container-high": "#1c2028",
+              "on-tertiary-fixed-variant": "#600083",
+              "surface-container-highest": "#22262f",
+              "on-primary-fixed-variant": "#006065",
+              "error-container": "#9f0519",
+              "outline": "#73757d",
+              "error-dim": "#d7383b",
+              "surface-container": "#161a21",
+              "surface-dim": "#0b0e14",
+              "on-secondary-fixed": "#41009a",
+              "surface-bright": "#282c36",
+              "primary-fixed": "#00f1fe",
+              "inverse-surface": "#f9f9ff",
+              "on-tertiary-container": "#000000",
+              "on-secondary": "#290067",
+              "surface-container-low": "#10131a",
+              "secondary-fixed-dim": "#ceb9ff",
+              "secondary-fixed": "#dac9ff",
+              "on-primary-container": "#00555a",
+              "primary-dim": "#00e2ee",
+              "secondary": "#ac89ff",
+              "on-surface": "#ecedf6",
+              "on-secondary-fixed-variant": "#6300e2",
+              "primary": "#99f7ff",
+              "inverse-on-surface": "#52555c",
+              "primary-container": "#00f1fe",
+              "tertiary-dim": "#bb00fc",
+              "surface": "#0b0e14",
+              "secondary-dim": "#874cff",
+              "error": "#ff716c",
+              "on-tertiary-fixed": "#2c003f",
+              "inverse-primary": "#006a70",
+              "on-background": "#ecedf6",
+              "tertiary-container": "#be0dff",
+              "surface-container-lowest": "#000000",
+              "secondary-container": "#7000ff",
+              "tertiary": "#d674ff",
+              "surface-variant": "#22262f",
+              "on-error-container": "#ffa8a3",
+              "on-secondary-container": "#f8f1ff",
+              "primary-fixed-dim": "#00e2ee",
+              "on-error": "#490006",
+              "on-surface-variant": "#a9abb3",
+              "tertiary-fixed-dim": "#d97dff",
+              "surface-tint": "#99f7ff",
+              "on-tertiary": "#390050",
+              "background": "#0b0e14"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Manrope"],
+              "mono": ["Fira Code"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(11, 14, 20, 0.4);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-border-glow:focus-within {
+            box-shadow: 0 0 15px rgba(0, 241, 254, 0.15);
+            border-color: rgba(0, 241, 254, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .contribution-cell {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(153, 247, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-[#0F1117] text-on-surface font-body selection:bg-primary/30 selection:text-primary min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-slate-950/40 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(0,242,255,0.15)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent font-headline tracking-tight">EduCore</span>
+<nav class="hidden md:flex items-center gap-6 font-headline tracking-tight text-sm">
+<a class="text-slate-400 hover:text-white transition-colors hover:bg-white/5 px-2 py-1 rounded" href="#">My Groups</a>
+<a class="text-cyan-400 border-b-2 border-cyan-400 pb-1" href="#">Data Structures Team A</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative flex items-center bg-surface-container-lowest/50 rounded-full px-4 py-1.5 border border-white/5 focus-within:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-label" placeholder="Search resources..." type="text"/>
+</div>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img alt="User Profile" data-alt="close-up portrait of a young professional man with a friendly expression in a modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaRmxa948JHTeONG4ZLhvdYfqefJvN5dX1S6dWoTgdp5MEerF96ONoKM5Xspr-D5cSN1biZSVcDscmCXOgH-hsfZrNENSXQ3ny8geGOaCf4TjMLOylPLJOkfQGhg_5TDgPbKLwQCBQPYdNicMwCj5d4U6jmT0zRxdkHKqyL_F7Le60uOxHcb9CIoJ8Zcxf9gB7KXLgamGdaDsEJRm0Sok3uTO8xwH9kTMRJNFNGmn9LclWILSSuu2DQ1FCKiDwbYr7L0l9rXu3iwpQ"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-black/60 backdrop-blur-2xl border-r border-white/5 flex flex-col py-4 z-40">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-black font-bold">terminal</span>
+</div>
+<div>
+<h2 class="text-cyan-400 font-headline font-bold text-sm leading-tight">Data Structures</h2>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-label">Team A • GitHub Active</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all font-body font-medium text-sm group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all font-body font-medium text-sm group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">chat</span>
+<span>Chat</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all font-body font-medium text-sm group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">assignment</span>
+<span>Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all font-body font-medium text-sm group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">folder_open</span>
+<span>Files</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-gradient-to-r from-cyan-500/20 to-indigo-500/10 text-cyan-400 border-r-4 border-cyan-400 shadow-[4px_0_15px_rgba(0,242,255,0.1)] transition-all font-body font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-xl">terminal</span>
+<span>GitHub</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all font-body font-medium text-sm group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">video_call</span>
+<span>Meetings</span>
+</a>
+</nav>
+<div class="px-6 py-4 mt-auto">
+<div class="p-4 rounded-xl bg-surface-container-low/50 border border-white/5">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-label mb-2">Workspace Storage</p>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3 shadow-[0_0_8px_rgba(153,247,255,0.5)]"></div>
+</div>
+<p class="text-[10px] text-slate-500 mt-2 font-body">8.4GB of 12GB used</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-10 pb-12 min-h-screen">
+<!-- Repository Connection Header Card -->
+<section class="mb-10">
+<div class="glass-panel p-8 rounded-none border-l-4 border-l-primary flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 bg-surface-container-highest flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h1 class="text-2xl font-headline font-bold text-on-surface">edu-core/ds-team-a</h1>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-primary/10 text-primary border border-primary/20 font-mono">public</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-label text-on-surface-variant">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">person</span> Owner: <span class="text-on-surface">Kunal</span></span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">account_tree</span> Branch: <span class="text-on-surface font-mono">main</span></span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">history</span> Last synced: <span class="text-on-surface">2 min ago</span></span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 bg-surface-container-highest text-on-surface font-headline font-medium text-sm border border-white/5 hover:bg-white/10 transition-all active:scale-95">
+                        Change repo
+                    </button>
+<button class="px-6 py-2.5 bg-gradient-to-r from-primary to-primary-container text-black font-headline font-bold text-sm shadow-[0_0_20px_rgba(0,241,254,0.3)] hover:brightness-110 transition-all active:scale-95">
+                        Sync now
+                    </button>
+</div>
+</div>
+</section>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Left Column: Commit Feed (60%) -->
+<div class="lg:col-span-7 space-y-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-headline font-bold text-lg text-primary uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined">commit</span> Commit Stream
+                    </h3>
+<!-- Filter Bar -->
+<div class="flex items-center gap-3">
+<div class="flex items-center bg-surface-container-low px-3 py-1.5 border border-white/5 rounded-sm">
+<span class="text-[10px] text-on-surface-variant font-label mr-2">MEMBER:</span>
+<select class="bg-transparent border-none p-0 text-xs font-medium focus:ring-0 text-on-surface">
+<option>All Members</option>
+<option>Alex Chen</option>
+<option>Sarah</option>
+<option>David</option>
+</select>
+</div>
+<div class="flex items-center bg-surface-container-low px-3 py-1.5 border border-white/5 rounded-sm">
+<span class="text-[10px] text-on-surface-variant font-label mr-2">BRANCH:</span>
+<select class="bg-transparent border-none p-0 text-xs font-medium focus:ring-0 text-on-surface">
+<option>All Branches</option>
+<option>main</option>
+<option>dev</option>
+<option>feature/avl-fix</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Commit List -->
+<div class="space-y-4">
+<!-- Commit Card 1 -->
+<div class="glass-panel p-5 group hover:border-primary/20 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<img alt="Alex Chen" class="w-10 h-10 rounded-sm border border-white/10" data-alt="close-up portrait of a young man with glasses smiling gently, blurred urban tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1ILtxP_P25i_k0rsfgcZakg6pDFFRzV6v_80AXQ8zsyGN_t7gZykXy5_4s3p4tcFAEGp9vzOigA0JrhB4MrUUbUMJXA19SZnb6HjKT0gECxFewrcbKDf1nV8p6PRs_Df8DZ1M9tSQ5d3jD41t0YWNqGMdZbOv-ImDX43CLfe7nVezOV6CaJTp-kz4QYzJnp5XRS7D4IiETgiRPzXNw3r5olivP27gUCIIKTRkBhOxtvoqujp7VC1oPjCnQtuVTrVH2RUWiu_YmZoe"/>
+<div>
+<h4 class="text-on-surface font-medium mb-0.5">Refactor AVL Tree rotations</h4>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant font-label">
+<span class="text-primary font-medium">Alex Chen</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">account_tree</span> dev</span>
+<span>•</span>
+<span>10:45 AM</span>
+</div>
+</div>
+</div>
+<div class="text-right font-mono text-xs">
+<div class="text-on-surface-variant mb-1">SHA: <span class="text-secondary">7f3a9e</span></div>
+<div class="flex items-center justify-end gap-2">
+<span class="text-primary">+142</span>
+<span class="text-error">-28</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 p-3 font-mono text-[11px] text-on-surface-variant border-l-2 border-primary/40">
+<span class="text-primary-dim">@@ -42,8 +42,12 @@</span> class AVLTree {<br/>
+                            - <span class="opacity-50">return leftRotate(node);</span><br/>
+                            + <span class="text-primary">node.height = Math.max(height(node.left), height(node.right)) + 1;</span>
+</div>
+</div>
+<!-- Commit Card 2 -->
+<div class="glass-panel p-5 group hover:border-primary/20 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-4">
+<img alt="Sarah" class="w-10 h-10 rounded-sm border border-white/10" data-alt="close-up profile of a woman with dark hair against a minimalist neon background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGjCk_mM0Zt1cLq2ZR-ZX5C88TxHp0PhE7PcMEfZLhBsVZSM4XV5WosIt7g9mis_Jiz3HK_Bduxt8DHqYP2_kDfynrWwN7__V9fcCQEFySmhHMg9MK0OdYJzBhE28pvduTYwqWSJltnZBxY9p7nl0Hxbxmh_BiB7QxGAL_H10HDpBiRY4xFH9BTVzksFRCAD3pddDrjspZYLCGEI-yfRKOIYQNjNNl8YxSKairMfVubRxTpdkvegF-ooy91n64VvOtYd8tu662zdCp"/>
+<div>
+<h4 class="text-on-surface font-medium mb-0.5">Update README with installation steps</h4>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant font-label">
+<span class="text-primary font-medium">Sarah</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">account_tree</span> main</span>
+<span>•</span>
+<span>Yesterday</span>
+</div>
+</div>
+</div>
+<div class="text-right font-mono text-xs">
+<div class="text-on-surface-variant mb-1">SHA: <span class="text-secondary">b2c8d1</span></div>
+<div class="flex items-center justify-end gap-2">
+<span class="text-primary">+45</span>
+<span class="text-error">-0</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Commit Card 3 -->
+<div class="glass-panel p-5 group hover:border-primary/20 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-4">
+<img alt="David" class="w-10 h-10 rounded-sm border border-white/10" data-alt="man with beard looking thoughtfully away from camera, soft dark lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGobur5Zia_MsYm-EAESbh-fW3aTBgxowlZW6vmZ7s0nA6MFnh8UHMZDVu5Nw_YWVlirJa0ydPP7GTupTYykpI5TXaTvQmALPVmvJxhUM4ldcevJBfQFT9jQwd9D0aMNAEOW9gaTCcS1pHcQLwib2G3UGEt2qesU9umGs1NSPdXMb7u4MPpQ7AZL9P1sgykztNy3sHpOwcdvFUKuWXUuc2YRLWeYr60HGj41918_JReFN-0XTcxpKfm3f9fa08mhfEGQn8lmPwkO8X"/>
+<div>
+<h4 class="text-on-surface font-medium mb-0.5">Fix: Array index out of bounds in Heap Sort</h4>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant font-label">
+<span class="text-primary font-medium">David</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">account_tree</span> feature/heap-fix</span>
+<span>•</span>
+<span>Oct 24</span>
+</div>
+</div>
+</div>
+<div class="text-right font-mono text-xs">
+<div class="text-on-surface-variant mb-1">SHA: <span class="text-secondary">a4f21e</span></div>
+<div class="flex items-center justify-end gap-2">
+<span class="text-primary">+2</span>
+<span class="text-error">-2</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats (40%) -->
+<div class="lg:col-span-5 space-y-10">
+<!-- Contribution Heatmap -->
+<section>
+<h3 class="font-headline font-bold text-sm text-on-surface-variant uppercase tracking-[0.2em] mb-4 flex items-center justify-between">
+<span>Commit Activity</span>
+<span class="text-[10px] lowercase font-normal">Last 30 days</span>
+</h3>
+<div class="glass-panel p-6">
+<div class="grid grid-cols-7 gap-2 mb-4">
+<!-- Generation of a simulated heatmap grid -->
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/40 shadow-[0_0_5px_rgba(0,241,254,0.3)]"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/20"></div>
+<div class="contribution-cell bg-primary/60 shadow-[0_0_8px_rgba(0,241,254,0.4)]"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/20"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/90 shadow-[0_0_12px_rgba(0,241,254,0.6)]"></div>
+<div class="contribution-cell bg-primary/20"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/40 shadow-[0_0_5px_rgba(0,241,254,0.3)]"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/60 shadow-[0_0_8px_rgba(0,241,254,0.4)]"></div>
+<div class="contribution-cell bg-primary/20"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/40 shadow-[0_0_5px_rgba(0,241,254,0.3)]"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/20"></div>
+<div class="contribution-cell bg-primary/60 shadow-[0_0_8px_rgba(0,241,254,0.4)]"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/10"></div>
+<div class="contribution-cell bg-primary/10"></div>
+</div>
+<div class="flex items-center justify-between text-[10px] text-on-surface-variant font-label">
+<span>Less</span>
+<div class="flex gap-1">
+<div class="contribution-cell bg-primary/5"></div>
+<div class="contribution-cell bg-primary/20"></div>
+<div class="contribution-cell bg-primary/50"></div>
+<div class="contribution-cell bg-primary/80"></div>
+<div class="contribution-cell bg-primary"></div>
+</div>
+<span>More</span>
+</div>
+</div>
+</section>
+<!-- Member Contribution Chart -->
+<section>
+<h3 class="font-headline font-bold text-sm text-on-surface-variant uppercase tracking-[0.2em] mb-4">Core Contributors</h3>
+<div class="glass-panel p-6 space-y-6">
+<!-- Alex -->
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-label">
+<span class="text-on-surface">Alex Chen</span>
+<span class="text-primary font-mono">142 commits</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%] shadow-[0_0_10px_rgba(153,247,255,0.4)]"></div>
+</div>
+</div>
+<!-- Sarah -->
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-label">
+<span class="text-on-surface">Sarah</span>
+<span class="text-primary font-mono">98 commits</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[60%] shadow-[0_0_10px_rgba(153,247,255,0.3)]"></div>
+</div>
+</div>
+<!-- David -->
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-label">
+<span class="text-on-surface">David</span>
+<span class="text-primary font-mono">54 commits</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[35%] shadow-[0_0_10px_rgba(153,247,255,0.2)]"></div>
+</div>
+</div>
+<!-- Kunal -->
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-label">
+<span class="text-on-surface">Kunal</span>
+<span class="text-primary font-mono">31 commits</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[20%] shadow-[0_0_10px_rgba(153,247,255,0.1)]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Open Pull Requests -->
+<section>
+<h3 class="font-headline font-bold text-sm text-on-surface-variant uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">call_split</span> Pull Requests
+                    </h3>
+<div class="space-y-3">
+<div class="glass-panel p-4 flex items-center justify-between hover:bg-white/5 transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">radio_button_checked</span>
+<div>
+<p class="text-sm font-medium text-on-surface">Feature: Sorting Visualizer</p>
+<p class="text-[10px] text-on-surface-variant font-label">#14 opened by <span class="text-primary">Sarah</span> • 2 days ago</p>
+</div>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded-sm bg-primary/10 text-primary border border-primary/30 uppercase">Open</span>
+</div>
+<div class="glass-panel p-4 flex items-center justify-between opacity-60 hover:opacity-100 transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+<div>
+<p class="text-sm font-medium text-on-surface">Bug: Memory Leak</p>
+<p class="text-[10px] text-on-surface-variant font-label">#12 merged by <span class="text-secondary">Alex Chen</span> • 4 days ago</p>
+</div>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded-sm bg-secondary/10 text-secondary border border-secondary/30 uppercase">Merged</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Floating UI: Sync Status HUD Overlay -->
+<div class="fixed bottom-6 right-6 z-50">
+<div class="glass-panel p-4 rounded-xl border border-primary/20 flex items-center gap-4 pr-6 shadow-2xl">
+<div class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</div>
+<div>
+<p class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest leading-none">System Status</p>
+<p class="text-xs font-bold text-on-surface font-headline">GitHub Connected • Live Sync</p>
+</div>
+<div class="h-8 w-px bg-white/10 mx-2"></div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+</body></html>

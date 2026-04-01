@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings | EduCore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#22262f",
+                        "on-surface-variant": "#a9abb3",
+                        "tertiary-fixed-dim": "#d97dff",
+                        "tertiary": "#d674ff",
+                        "secondary-fixed-dim": "#ceb9ff",
+                        "error-dim": "#d7383b",
+                        "on-primary": "#005f64",
+                        "on-error-container": "#ffa8a3",
+                        "error": "#ff716c",
+                        "surface-container-lowest": "#000000",
+                        "secondary-container": "#7000ff",
+                        "on-surface": "#ecedf6",
+                        "surface-tint": "#99f7ff",
+                        "secondary-fixed": "#dac9ff",
+                        "primary-dim": "#00e2ee",
+                        "on-primary-fixed": "#004145",
+                        "primary-fixed-dim": "#00e2ee",
+                        "primary": "#99f7ff",
+                        "on-secondary": "#290067",
+                        "on-tertiary-container": "#000000",
+                        "on-tertiary": "#390050",
+                        "surface-container-low": "#10131a",
+                        "primary-container": "#00f1fe",
+                        "error-container": "#9f0519",
+                        "on-tertiary-fixed": "#2c003f",
+                        "outline-variant": "#45484f",
+                        "on-tertiary-fixed-variant": "#600083",
+                        "outline": "#73757d",
+                        "surface-container": "#161a21",
+                        "background": "#0b0e14",
+                        "surface-container-highest": "#22262f",
+                        "tertiary-dim": "#bb00fc",
+                        "on-secondary-fixed-variant": "#6300e2",
+                        "surface-dim": "#0b0e14",
+                        "on-background": "#ecedf6",
+                        "surface-bright": "#282c36",
+                        "surface": "#0b0e14",
+                        "secondary": "#ac89ff",
+                        "on-secondary-container": "#f8f1ff",
+                        "on-primary-container": "#00555a",
+                        "tertiary-fixed": "#e192ff",
+                        "inverse-primary": "#006a70",
+                        "secondary-dim": "#874cff",
+                        "tertiary-container": "#be0dff",
+                        "on-primary-fixed-variant": "#006065",
+                        "on-error": "#490006",
+                        "inverse-surface": "#f9f9ff",
+                        "surface-container-high": "#1c2028",
+                        "primary-fixed": "#00f1fe",
+                        "on-secondary-fixed": "#41009a",
+                        "inverse-on-surface": "#52555c"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #0b0e14; color: #ecedf6; font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(20px); background: rgba(34, 38, 47, 0.4); border: 1px solid rgba(115, 117, 125, 0.1); }
+        .neon-glow-primary { box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
+        .hud-grid { background-image: radial-gradient(rgba(115, 117, 125, 0.1) 1px, transparent 1px); background-size: 30px 30px; }
+    </style>
+</head>
+<body class="dark overflow-x-hidden">
+<!-- Main Platform Layout -->
+<div class="flex min-h-screen">
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-[#0b0e14] shadow-[4px_0_24px_rgba(0,0,0,0.5)] border-r border-white/5 z-50">
+<div class="p-8">
+<h1 class="text-[#00F2FF] font-black italic text-2xl font-headline tracking-tighter">EduCore</h1>
+<p class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mt-1">Command Center</p>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-colors font-['Space_Grotesk'] text-sm uppercase tracking-widest duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-colors font-['Space_Grotesk'] text-sm uppercase tracking-widest duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="book">book</span>
+<span>My Subjects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-colors font-['Space_Grotesk'] text-sm uppercase tracking-widest duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span>Assignments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-colors font-['Space_Grotesk'] text-sm uppercase tracking-widest duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Schedule</span>
+</a>
+</nav>
+<div class="mt-auto p-4 space-y-2 mb-4">
+<a class="flex items-center gap-3 px-4 py-3 text-[#00F2FF] bg-[#00F2FF]/10 border-r-2 border-[#00F2FF] font-['Space_Grotesk'] text-sm uppercase tracking-widest duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-colors font-['Space_Grotesk'] text-sm uppercase tracking-widest duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 relative min-h-screen hud-grid">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 z-40 bg-black/40 backdrop-blur-xl border-b border-white/10 flex justify-between items-center w-full px-6 py-4 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)]">
+<div class="flex items-center gap-4">
+<span class="md:hidden text-[#00F2FF] text-xl font-bold italic">EC</span>
+<h2 class="text-xl font-headline font-bold tracking-tight text-[#00F2FF]">Command Settings</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:block relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined text-sm">search</span>
+<input class="bg-surface-container-low border-none rounded-full py-1.5 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary" placeholder="Search system..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-[#00F2FF] transition-all active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img alt="Profile" data-alt="Close up portrait of a young professional man with a friendly expression, soft studio lighting, sharp focus on eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA858p6-a4GsJ87nVieWFmYdBSiRZ4Zzsy_QT_RimxM59abf2f3IdbixyAWuJaU_OMr_QcI8DFnj3GEg3Rc5BJODRzDikpBWjHzDrGElLGe6DXS5nf9IbU-IER3hGchmqZvfpU0FwLnXNxMUTHa4AhrlEnrjvkHOc4xTBJ6njtUr1F-Fy-SzlqUMIj8-sfTbuPNPC03KlaGSdaA225cNNcJuZgwTPZUYKSpPtmB0G7td41FiVKPswwd269MNcR_lbpE6YkR6InKGLvJ"/>
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto px-6 py-10 lg:flex lg:gap-12">
+<!-- Secondary Settings Navigation -->
+<nav class="lg:w-64 flex lg:flex-col overflow-x-auto lg:overflow-visible gap-1 mb-8 lg:mb-0 border-b lg:border-b-0 border-outline-variant/10 pb-4 lg:pb-0 scrollbar-hide">
+<a class="flex-shrink-0 lg:flex-none flex items-center gap-3 px-4 py-2.5 rounded-lg text-primary bg-primary/10 font-medium text-sm transition-all border border-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">person</span>
+                        Profile
+                    </a>
+<a class="flex-shrink-0 lg:flex-none flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 font-medium text-sm transition-all border border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+                        Account
+                    </a>
+<a class="flex-shrink-0 lg:flex-none flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 font-medium text-sm transition-all border border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+                        Notifications
+                    </a>
+<a class="flex-shrink-0 lg:flex-none flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 font-medium text-sm transition-all border border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+                        Appearance
+                    </a>
+<a class="flex-shrink-0 lg:flex-none flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 font-medium text-sm transition-all border border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+                        Integrations
+                    </a>
+<a class="flex-shrink-0 lg:flex-none flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 font-medium text-sm transition-all border border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">security</span>
+                        Privacy
+                    </a>
+</nav>
+<!-- Settings Content Shell -->
+<div class="flex-1 space-y-10">
+<!-- Profile Section -->
+<section class="glass-panel rounded-xl p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] -mr-32 -mt-32"></div>
+<div class="flex flex-col md:flex-row gap-10 items-start">
+<!-- Avatar Upload Area -->
+<div class="relative group">
+<div class="w-32 h-32 rounded-full glass-panel flex items-center justify-center relative overflow-hidden border-2 border-primary/20 p-1">
+<img class="w-full h-full rounded-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500" data-alt="Modern high quality profile photo of a software engineer with soft background bokeh, cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfdVlg8Y5pJPrnUeuhqknxpXcglj5fAodnuTaVguTIrPJJWYPZDxcASRXZ-6CMsdByjnQB0cXhi0OCTGxaoXYKbvzpjUD9QgSAUPfkbOljAzBn0jSz5vq_bxhgS7UjQCfl-bKrrGWsaK5cIcwPkud8iXTKGp76u1p--XllycduDKbKxeI3mKwOcKI5MdNib8RXyrvJvBJ4_pEGBA8lZbmsPgRce5YtaPyX2SepBy2b1qG8AgIfYJKJC1gsdL2iu24ROzshbYyg4x0N"/>
+<div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary mb-1">upload</span>
+<span class="text-[10px] font-label font-bold uppercase tracking-wider text-white">Change</span>
+</div>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary p-1.5 rounded-full text-on-primary-container shadow-lg">
+<span class="material-symbols-outlined text-sm">edit</span>
+</div>
+</div>
+<div class="flex-1 w-full space-y-6">
+<h3 class="font-headline text-2xl font-bold text-on-surface flex items-center gap-2">
+                                    Personal Identity
+                                    <span class="h-[1px] flex-1 bg-gradient-to-r from-outline-variant/50 to-transparent"></span>
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest">Full Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface font-body focus:border-primary-container focus:ring-1 focus:ring-primary-container/30 transition-all outline-none" type="text" value="Alexander Sterling"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest">Email Vector</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface font-body focus:border-primary-container focus:ring-1 focus:ring-primary-container/30 transition-all outline-none" type="email" value="alex@educore.io"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest">Digital Institution</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface font-body focus:border-primary-container focus:ring-1 focus:ring-primary-container/30 transition-all outline-none" type="text" value="Aether Institute of Advanced Learning"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest">Bio Description</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface font-body focus:border-primary-container focus:ring-1 focus:ring-primary-container/30 transition-all outline-none resize-none" rows="3">AI researcher and systems architect focused on the intersection of educational psychology and quantum computing paradigms.</textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Skills Section -->
+<div class="mt-10 pt-10 border-t border-outline-variant/10">
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-4 block">Active Skillsets</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-full text-secondary text-xs font-bold flex items-center gap-1">
+                                    React <span class="material-symbols-outlined text-[14px]">close</span>
+</span>
+<span class="px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-full text-secondary text-xs font-bold flex items-center gap-1">
+                                    Python <span class="material-symbols-outlined text-[14px]">close</span>
+</span>
+<span class="px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-full text-secondary text-xs font-bold flex items-center gap-1">
+                                    TensorFlow <span class="material-symbols-outlined text-[14px]">close</span>
+</span>
+<span class="px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-full text-secondary text-xs font-bold flex items-center gap-1">
+                                    GraphQL <span class="material-symbols-outlined text-[14px]">close</span>
+</span>
+<button class="px-3 py-1 border border-dashed border-outline-variant/50 rounded-full text-on-surface-variant text-xs hover:border-primary hover:text-primary transition-all">
+                                    + Add Skill
+                                </button>
+</div>
+</div>
+<!-- Socials -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant/10">
+<div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded">
+<img alt="GitHub" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHJmWXJpTHpZ5eGwUoRqCNvq_CLjzqZSKw1jum_C_hxa1CyprJ9z7aKP2xMQ73dGlmd3dtsU3epFbHEeGtMeQaQGY9NMI5mqdWzGraGhtQpeM6QdjEGNSD7q7Re8V_H1X8qni7ImFyDiJ2fWPmNuZTQMqjyFExGG8G9xFjPfAjKu-UseAcp_PuVRjW0kSQ8-Hm0qNtZCNBVjS9Jg1lN00Xct28cJ2Ehjsy63e1SXZVrsXfql1Blqf46ELH5dUp5R8CqPne_4myoMS6"/>
+</div>
+<input class="flex-1 bg-transparent border-none text-sm text-on-surface-variant focus:ring-0" type="text" value="github.com/asterling"/>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant/10">
+<div class="w-8 h-8 flex items-center justify-center bg-[#0077b5]/10 rounded">
+<img alt="LinkedIn" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrTm8teIjE2DfcJbqwHZpowbh4pzMaLea5dWqyMCz4HhtGg4u-x2dwCcJW_Fshsf4EF4xiawD2C8y9Q5fC9hYsr1o51R1-b7whQh0v1-_t4WkOEXU7qRQL_5pqUhKow15-I35O1tDIaG5YGnKpgxnMI8vHDgA-PEK40DMcQRKp3FX8yVA_saHy-xo807j3zmCYWUuM1GwuuQifxJgwVaRpDuJfzGOAbjMO3jq1AKjY9Pnlqyf-uQaP1xE2ota6GQTppW48O-HQ9fCE"/>
+</div>
+<input class="flex-1 bg-transparent border-none text-sm text-on-surface-variant focus:ring-0" type="text" value="linkedin.com/in/asterling"/>
+</div>
+</div>
+<div class="mt-10 flex justify-end">
+<button class="bg-gradient-to-r from-primary to-primary-container px-8 py-3 rounded-lg text-on-primary-fixed font-bold tracking-tight shadow-[0_0_20px_rgba(0,242,255,0.4)] hover:scale-[1.02] transition-all active:scale-95">
+                                Save Protocol Changes
+                            </button>
+</div>
+</section>
+<!-- Notifications & Performance -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<section class="glass-panel rounded-xl p-8 space-y-6">
+<h3 class="font-headline text-lg font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">notifications</span>
+                                Signal Filters
+                            </h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between group">
+<div>
+<p class="text-sm font-medium text-on-surface">Task Assignments</p>
+<p class="text-[11px] text-on-surface-variant">Real-time alerts for new system tasks</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary/50"></div>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<div>
+<p class="text-sm font-medium text-on-surface">Chat Submissions</p>
+<p class="text-[11px] text-on-surface-variant">Pings for collaborator direct comms</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary/50"></div>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<div>
+<p class="text-sm font-medium text-on-surface">Sync Reminders</p>
+<p class="text-[11px] text-on-surface-variant">Scheduled session notifications</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary/50"></div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/10">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-3">Email Digest Frequency</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-2.5 text-sm appearance-none focus:ring-1 focus:ring-primary/40 outline-none">
+<option>Daily Synchronization</option>
+<option selected="">Weekly Summary</option>
+<option>Monthly Archive</option>
+<option>No Correspondence</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</section>
+<!-- Appearance -->
+<section class="glass-panel rounded-xl p-8 space-y-6">
+<h3 class="font-headline text-lg font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_fix_high</span>
+                                Interface Optics
+                            </h3>
+<div class="grid grid-cols-3 gap-3">
+<div class="border-2 border-primary rounded-xl p-3 bg-surface-container-highest/50 cursor-pointer relative">
+<div class="w-full h-12 bg-black rounded-md mb-2 flex flex-col gap-1 p-1 overflow-hidden">
+<div class="w-full h-1 bg-primary/20 rounded"></div>
+<div class="w-2/3 h-1 bg-primary/10 rounded"></div>
+</div>
+<p class="text-[10px] font-bold text-center uppercase tracking-tighter text-primary">Dark</p>
+<div class="absolute top-1 right-1 w-3 h-3 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[8px] font-bold text-black">check</span>
+</div>
+</div>
+<div class="border border-outline-variant/20 rounded-xl p-3 bg-surface hover:border-outline-variant/50 transition-all cursor-pointer">
+<div class="w-full h-12 bg-slate-100 rounded-md mb-2 flex flex-col gap-1 p-1 overflow-hidden">
+<div class="w-full h-1 bg-slate-300 rounded"></div>
+<div class="w-2/3 h-1 bg-slate-200 rounded"></div>
+</div>
+<p class="text-[10px] font-bold text-center uppercase tracking-tighter text-on-surface-variant">Light</p>
+</div>
+<div class="border border-outline-variant/20 rounded-xl p-3 bg-surface hover:border-outline-variant/50 transition-all cursor-pointer">
+<div class="w-full h-12 bg-gradient-to-br from-black to-slate-100 rounded-md mb-2 overflow-hidden"></div>
+<p class="text-[10px] font-bold text-center uppercase tracking-tighter text-on-surface-variant">Auto</p>
+</div>
+</div>
+<div class="pt-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-4">Core Resonance Color</label>
+<div class="flex gap-4">
+<button class="w-8 h-8 rounded-full bg-secondary ring-2 ring-offset-2 ring-offset-background ring-transparent hover:scale-110 transition-all"></button>
+<button class="w-8 h-8 rounded-full bg-primary ring-2 ring-offset-2 ring-offset-background ring-primary hover:scale-110 transition-all"></button>
+<button class="w-8 h-8 rounded-full bg-tertiary ring-2 ring-offset-2 ring-offset-background ring-transparent hover:scale-110 transition-all"></button>
+<button class="w-8 h-8 rounded-full bg-amber-400 ring-2 ring-offset-2 ring-offset-background ring-transparent hover:scale-110 transition-all"></button>
+</div>
+</div>
+</section>
+</div>
+<!-- Integrations Section -->
+<section class="space-y-6">
+<h3 class="font-headline text-xl font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">extension</span>
+                            External Core Connections
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- GitHub Integration -->
+<div class="glass-panel rounded-xl p-6 flex items-center justify-between group hover:border-primary/20 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-black flex items-center justify-center border border-outline-variant/20 group-hover:border-primary/30 transition-all">
+<img alt="GitHub" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHQu46w8AF-2q4aNXMzLxzgltC3LcF9xBRykBQdxZnIOiLdKBhxm5qJuxtBiU3Oc0E6Oecu13wlzNxohPLQWaqfVPRMNEzWh3sl0hKWshJyW8KC0yTlbVLA1_mtEqgFCNdYCUUES49R5EJ_B5mG7aj7ka4l3aRigkq5_8TGmK8ksBobftKpv8qrtsDNJeiEtW7zcsFaNJ1jxTV5uW1uv6I0sxim6tXmKC2d2Oqtwh0k_j7IxWbWuL0AMBr57V1q6oXWtvprqCpsZmN"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">GitHub Forge</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+<p class="text-[11px] text-on-surface-variant">Connected: 12 Repositories Syncing</p>
+</div>
+</div>
+</div>
+<button class="px-4 py-2 border border-error-dim/20 rounded-lg text-xs font-bold text-error-dim hover:bg-error-dim/10 transition-all">
+                                    Disconnect
+                                </button>
+</div>
+<!-- Google Calendar Integration -->
+<div class="glass-panel rounded-xl p-6 flex items-center justify-between group hover:border-primary/20 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-outline-variant/20">
+<img alt="Google" class="w-7 h-7" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDANOxPbmpYeJy0He4FgrLolPQX12nX6GUGiDDy4PzOCFACVIxuewh7qOjb1TXECz-bALSoTsmszD21Xev5GVuwJF9ZNioJV-ilDJAmGXbT-H70SVIkw0FEu4MfqmQW2vyko6wEn6--FrvKcjhStzsdv9UjL-jgQNTH_F3bDaT3yKnrysO2Zdcfat9bzdnwSAsI7oaz8wRsmyHIa_UsPHY5qj9Vwqa37YsqFdDVpmPAgucFMRhsgdJvqdyT9I1f1auTcWhJyJJ965OK"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Chronos Calendar</h4>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Map institutional deadlines to your life</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold text-on-surface transition-all">
+                                    Establish Link
+                                </button>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer Spacing for BottomNavBar on Mobile -->
+<div class="h-24 md:hidden"></div>
+</main>
+<!-- BottomNavBar (Shared Component - Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 md:hidden bg-black/60 backdrop-blur-2xl border-t border-white/10 shadow-[0_-10px_40px_rgba(0,242,255,0.15)]">
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-[#00F2FF] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-[#00F2FF] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-['Inter'] text-[10px] font-bold">Subjects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-[#00F2FF] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-['Inter'] text-[10px] font-bold">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#00F2FF] bg-[#00F2FF]/10 rounded-xl px-4 py-1 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Inter'] text-[10px] font-bold">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

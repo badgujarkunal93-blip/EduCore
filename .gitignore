@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+.vite
+.firebase
+.vercel
+.env
+.env.local
+.env.*.local
+functions/node_modules

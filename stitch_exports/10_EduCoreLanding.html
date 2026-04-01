@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduCore | Cinematic Learning Observatory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@200;300;400;500;600&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-dim": "#00e2ee",
+              "outline": "#73757d",
+              "surface-container-low": "#10131a",
+              "tertiary-container": "#be0dff",
+              "outline-variant": "#45484f",
+              "on-primary-fixed-variant": "#006065",
+              "surface-tint": "#99f7ff",
+              "surface-container-lowest": "#000000",
+              "tertiary-dim": "#bb00fc",
+              "on-primary-container": "#00555a",
+              "on-surface": "#ecedf6",
+              "error": "#ff716c",
+              "inverse-primary": "#006a70",
+              "on-secondary-fixed-variant": "#6300e2",
+              "on-error": "#490006",
+              "surface-container-high": "#1c2028",
+              "surface-container": "#161a21",
+              "on-tertiary-container": "#000000",
+              "on-secondary-container": "#f8f1ff",
+              "tertiary-fixed": "#e192ff",
+              "on-primary": "#005f64",
+              "on-primary-fixed": "#004145",
+              "secondary-fixed": "#dac9ff",
+              "on-tertiary-fixed": "#2c003f",
+              "secondary": "#ac89ff",
+              "surface-bright": "#282c36",
+              "primary-fixed": "#00f1fe",
+              "on-secondary": "#290067",
+              "secondary-container": "#7000ff",
+              "primary-fixed-dim": "#00e2ee",
+              "secondary-fixed-dim": "#ceb9ff",
+              "primary": "#99f7ff",
+              "surface-dim": "#0b0e14",
+              "on-tertiary-fixed-variant": "#600083",
+              "on-surface-variant": "#a9abb3",
+              "primary-container": "#00f1fe",
+              "surface-container-highest": "#22262f",
+              "background": "#0b0e14",
+              "error-dim": "#d7383b",
+              "surface-variant": "#22262f",
+              "on-secondary-fixed": "#41009a",
+              "tertiary-fixed-dim": "#d97dff",
+              "on-background": "#ecedf6",
+              "inverse-on-surface": "#52555c",
+              "surface": "#0b0e14",
+              "error-container": "#9f0519",
+              "on-tertiary": "#390050",
+              "on-error-container": "#ffa8a3",
+              "inverse-surface": "#f9f9ff",
+              "secondary-dim": "#874cff",
+              "tertiary": "#d674ff"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-grid {
+            background-image: 
+                linear-gradient(rgba(0, 241, 254, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 241, 254, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .glow-mask {
+            mask-image: radial-gradient(circle at center, black, transparent 80%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-white/5 shadow-[0_0_40px_-15px_rgba(0,242,255,0.3)]">
+<div class="flex justify-between items-center px-10 py-4 max-w-full">
+<div class="text-2xl font-bold tracking-tighter text-cyan-400 font-headline">EduCore</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-headline tracking-tight text-sm uppercase font-medium text-slate-400 hover:text-white transition-colors" href="#">Solutions</a>
+<a class="font-headline tracking-tight text-sm uppercase font-medium text-slate-400 hover:text-white transition-colors" href="#">Curriculum</a>
+<a class="font-headline tracking-tight text-sm uppercase font-medium text-slate-400 hover:text-white transition-colors" href="#">Observatory</a>
+<a class="font-headline tracking-tight text-sm uppercase font-medium text-slate-400 hover:text-white transition-colors" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:block px-5 py-2 font-headline text-xs uppercase tracking-widest text-primary border border-primary/20 hover:bg-primary/5 transition-all duration-300">Join as Student</button>
+<button class="px-5 py-2 font-headline text-xs uppercase tracking-widest bg-primary-container text-on-primary-container hover:shadow-[0_0_20px_rgba(0,241,254,0.4)] active:scale-95 duration-200 ease-in-out">Create as Teacher</button>
+</div>
+</div>
+</nav>
+<main class="relative pt-20 overflow-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center px-6 lg:px-10 text-center">
+<!-- Background Decorations -->
+<div class="absolute inset-0 kinetic-grid glow-mask pointer-events-none"></div>
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-secondary-container/20 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-primary-container/10 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="relative z-10 max-w-5xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-outline-variant/30 bg-surface-container-low mb-8">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant">System Status: Active</span>
+</div>
+<h1 class="font-headline text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[0.9]">
+                    Where classrooms <br/> become <span class="text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary-dim to-secondary">workspaces</span>
+</h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                    A cinematic operating system for technical education. Transform passive learning into high-stakes production with our integrated observatory.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<button class="w-full sm:w-auto px-10 py-5 bg-gradient-to-br from-secondary to-secondary-container text-white font-headline font-bold uppercase tracking-widest rounded-none shadow-[0_0_30px_-5px_rgba(112,0,255,0.5)] hover:scale-105 transition-transform duration-300">
+                        Join as Student
+                    </button>
+<button class="w-full sm:w-auto px-10 py-5 border border-primary text-primary font-headline font-bold uppercase tracking-widest rounded-none bg-primary/5 hover:bg-primary/10 shadow-[0_0_20px_rgba(153,247,255,0.15)] transition-all duration-300">
+                        Create as Teacher
+                    </button>
+</div>
+</div>
+<!-- Social Proof Strip -->
+<div class="w-full mt-32 py-12 border-y border-white/5 bg-surface-container-lowest/50 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row items-center justify-between gap-10">
+<div class="text-left">
+<p class="font-headline text-2xl font-bold tracking-tight text-white">Used by 200+ students</p>
+<p class="text-on-surface-variant font-label text-sm">Across 12 Global Universities</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-12 opacity-40 grayscale contrast-125">
+<img alt="University Logo" class="h-6" data-alt="minimalist typographic logo for MIT university in white color on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeZrW2ry29pji7SDS5oNPQVEVYrbVWMPikVLBpdcXWt7xeYqDn4AWjTAyzMyUMZzNE3kJRwj78HM5J5dRie_3FvfVa877v3l_ApYResIO6ioO9QQyvEdZquhJD5q_eElLGBsO0Wz3nA8cKf2BlEzdvZdOvmqxAveDGDi4mBSaxnFWe-Ehr9y_0c03JEjrmRVmm_DZtSVfW7td9x4VB6lcNiWAJewF063sWMfwxZIP6l1Jo9gDkPLplMJUv9CI3ZglRHq2zQMtyTy7e"/>
+<img alt="University Logo" class="h-6" data-alt="minimalist typographic logo for Stanford university in white color on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvs7MTrvHj-ct6idiNTx9PpTpX3_wuQHrk_L8SI-mJN04NOSpS3qo4PtSTmo0Sm0MoUSaYNFZmFEte4pi60rIWpEk-rHXnce_L0AxVC27_VTxbmt6Lj5i_uTZJamoPsw8OcKaHbX9YQGvkL310uiuJH3O02GV9YOIdukpS82bHy8vBS2LaNHDZk1ihjez97ITZUuqArrkF4bfcb5iRSxAlGYvu4lP13hzG2hCdqGq4yaUV0pnwPhVNiKcN5YAaqzvGrC52FFFoJAoE"/>
+<img alt="University Logo" class="h-6" data-alt="minimalist typographic logo for Harvard university in white color on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBOOfQ9T_0Dj1kIOh5bnqIRoeClzPaP_7-t7aL8plYUHtKy0ofrljen_WAIWO7tx-3Rw-Qn-WryoDrSe3Dr6C701yxY4ki_NlRQpkPCFlXyd7Y_CbXaIUvLtlZ4P0HejfgQR6-Y9YsfAKZhkEaBupQG9sAtk9aRJFCEnCdugzcHpLKGG3zPmMkVSCkz-cgGs_QL2nDLXnUCCuEADRaPH5SRmRdGJNeUbMlaEykhlLzmXh-unnzZ0ZGq5pprB6hsP1rsK2kitV6tWjG"/>
+<img alt="University Logo" class="h-6" data-alt="minimalist typographic logo for Oxford university in white color on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlpndRm-SvCywuup_vDtD6mhV5687XCA3q0SQWoOm6k_2NjzXePL5jmFYztFZZYHjixEwm5VuP_XIDtXSU9rdPZ-P1LRmuOegChTiT-b-zOGJWNvNyseiY86rI4JUnSXAKILeE1VEk9irQgNiYbbehxpK7h3VSynReclu6B-VgbSOgBLp9H9WXwu9vllVLXZNg4NVmfJUQ4bsup5bp2p11iOeiOYjWIzbzKL98lDUIzLn7sePU6DP2E3I3McbPnJn58XaNKxw30zUm"/>
+<img alt="University Logo" class="h-6" data-alt="minimalist typographic logo for ETH Zurich university in white color on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxgCakphFInfauXP7sR6sAqphyZA75iyA6837sjjqr-40LfEOp_r24CYxPiBXscevurvC_P2lxcx6NT1uQ9Q5OYR9fbt5b7nrEgVCnAD4DglDy62vT9_iw2T_c63Fo9L1cJ9dhZbWYjS4T5A_dmb0GnS5jRT3LLIV-6nm_5Bwx_8XnXQJYNPcA1s2fTEn9L1az-dHkN0uofEZExroCWWb0fcT4vmpysqdbSUrcAqx5RnJp_ro-0oM-Hy6yZ5dQSV5nV9WNixJou0Dh"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Section -->
+<section class="py-32 px-10 max-w-7xl mx-auto">
+<div class="flex flex-col mb-20">
+<span class="text-primary font-headline font-bold uppercase tracking-[0.3em] text-xs mb-4">Functional Modules</span>
+<h2 class="text-5xl font-headline font-bold tracking-tighter">Engineered for Performance.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="group relative p-10 bg-surface-container-low border border-white/5 hover:border-primary/30 transition-all duration-500 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 mb-8 flex items-center justify-center bg-surface-container-highest border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="query_stats">query_stats</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4">Live progress tracking</h3>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                            Real-time telemetry of every assignment, providing instantaneous feedback loops for both students and instructors.
+                        </p>
+<div class="mt-8 pt-8 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
+<span class="text-primary font-label text-xs uppercase font-bold tracking-widest cursor-pointer hover:underline">View Analytics Demo</span>
+</div>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="group relative p-10 bg-surface-container-low border border-white/5 hover:border-secondary/30 transition-all duration-500 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 mb-8 flex items-center justify-center bg-surface-container-highest border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="hub">hub</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4">Google Workspace-style groups</h3>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                            Seamless collaborative environments with shared technical assets, cloud environments, and unified communication.
+                        </p>
+<div class="mt-8 pt-8 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
+<span class="text-secondary font-label text-xs uppercase font-bold tracking-widest cursor-pointer hover:underline">Collaborate Now</span>
+</div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="group relative p-10 bg-surface-container-low border border-white/5 hover:border-tertiary/30 transition-all duration-500 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 mb-8 flex items-center justify-center bg-surface-container-highest border border-outline-variant/20">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4">Hackathon team builder</h3>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                            Algorithmic matching system that assembles high-performance teams based on complementary skill matrices.
+                        </p>
+<div class="mt-8 pt-8 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
+<span class="text-tertiary font-label text-xs uppercase font-bold tracking-widest cursor-pointer hover:underline">Build Your Team</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Content Preview (Visual Component) -->
+<section class="py-32 px-10 relative">
+<div class="max-w-7xl mx-auto bg-surface-container-low border border-white/5 rounded-none overflow-hidden relative shadow-2xl">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center mix-blend-overlay opacity-10" data-alt="high-tech computer laboratory with multiple screens displaying code and data visualizations in a futuristic dark setting"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-2">
+<div class="p-16 flex flex-col justify-center">
+<h3 class="font-headline text-4xl font-bold mb-6">The Kinetic Dashboard</h3>
+<p class="text-on-surface-variant mb-10 leading-relaxed">
+                            Experience zero-latency monitoring. Our observatory provides educators with a "God Mode" view of student workspaces, enabling intervention exactly when it's needed most.
+                        </p>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-sm font-label">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Integrated Cloud IDE support</span>
+</div>
+<div class="flex items-center gap-4 text-sm font-label">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Real-time code heatmaps</span>
+</div>
+<div class="flex items-center gap-4 text-sm font-label">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Automated peer-review queues</span>
+</div>
+</div>
+</div>
+<div class="p-8 lg:p-16 flex items-center justify-center">
+<div class="relative w-full aspect-video bg-black border border-white/10 rounded-lg overflow-hidden shadow-2xl">
+<!-- Mock UI -->
+<div class="absolute top-0 w-full h-8 bg-surface-container-highest flex items-center px-4 gap-2">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<div class="mt-12 p-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 bg-surface-container-high animate-pulse"></div>
+<div class="h-32 bg-surface-container-high animate-pulse" style="animation-delay: 0.1s"></div>
+<div class="h-20 bg-surface-container-high col-span-2 animate-pulse" style="animation-delay: 0.2s"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-10 mt-auto bg-slate-950 border-t border-slate-900">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="text-lg font-black text-white font-headline">EduCore</div>
+<p class="font-label text-xs font-light tracking-wide text-slate-500 uppercase">Kinetic Observatory Protocol</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label text-xs font-light tracking-wide text-slate-500 hover:text-cyan-400 transition-colors" href="#">Privacy Protocol</a>
+<a class="font-label text-xs font-light tracking-wide text-slate-500 hover:text-cyan-400 transition-colors" href="#">System Status</a>
+<a class="font-label text-xs font-light tracking-wide text-slate-500 hover:text-cyan-400 transition-colors" href="#">Security</a>
+<a class="font-label text-xs font-light tracking-wide text-slate-500 hover:text-cyan-400 transition-colors" href="#">API Documentation</a>
+</div>
+<div class="text-slate-500 font-label text-[10px] tracking-widest opacity-80 uppercase">
+                © 2024 EduCore Kinetic Observatory. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>
